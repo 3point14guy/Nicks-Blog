@@ -8,7 +8,7 @@ class PostsController < ApplicationController
   end
 
   def user_posts
-    @user = User.find(params[:id])
+    @user = User.find_by(username: params[:name])
   end
 
   # GET /posts/1
