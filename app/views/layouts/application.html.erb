@@ -9,14 +9,23 @@
   </head>
 
   <body>
+
 <div class="container">
   <div class="pull-right">
+
+
     <% if user_signed_in? %>
+    Welcome <%= current_user.username %>
+    <%= gravatar_tag current_user.email, size: 34 %>
+    <%= link_to "Edit Profile", edit_user_registration_path, class: "btn btn-primary" %> 
       <%= link_to "Sign Out", destroy_user_session_path, method: :delete, class: "btn btn-danger" %>
     <% end %>
   </div>
-  	<div class="container">
+
+  <div class="container">
+    <br>
+    <br>
     <%= yield %>
-    </div>
+  </div>
   </body>
 </html>

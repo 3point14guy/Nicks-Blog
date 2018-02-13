@@ -5,7 +5,10 @@
     <h3 class="panel-title"><%= @post.title %></h3>
   </div>
   <div class="panel-body">
-   By: <%= @post.user.email %><br><br>
+    <% if @post.user.avatar? %>
+    <%= image_tag @post.user.avatar.url, size: 34 %>
+    <% end %>
+   By: <%= @post.user.username %><br><br>
     <%= @post.blog_entry %><br><br>
     <button class="btn btn-warning"><%= link_to 'Edit', edit_post_path(@post) %> </button>
   </div>
@@ -14,8 +17,11 @@
 <%= render 'comments/form', comment: @comment %>
 
 <% @post.comments.each do |comment| %>
-        <p>
-	    <%= comment.author %> said...<br />
+<% if comment.user.avatar?%>
+  <%= image_tag comment.user.avatar.url, size: 34 %>
+<% end%>
+  <p>
+	    <%= comment.user.username %> said...<br />
 	    <%= comment.comment_entry %>
 	</p>
     <% end %>
