@@ -15,7 +15,7 @@
       <%= image_tag post.user.avatar.url, size: 34 %>
     <% end %>
     By...
-    <%= post.user.username %>
+    <em><%= link_to post.user.username, user_posts_path(id: post.user_id) %></em>
     <br><br>
     <%= post.blog_entry %>
     <br><br>
@@ -29,4 +29,6 @@
 
 <br>
 
-<button class="btn btn-success"><%= link_to 'New Post', new_post_path %></button>
+<button class="btn btn-success"><%= link_to 'New Post', new_post_path %></button><br>
+<%= paginate @posts %>
+<br><br>

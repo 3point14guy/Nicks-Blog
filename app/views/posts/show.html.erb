@@ -8,7 +8,7 @@
     <% if @post.user.avatar? %>
     <%= image_tag @post.user.avatar.url, size: 34 %>
     <% end %>
-   By: <%= @post.user.username %><br><br>
+   By: <%= link_to @post.user.username, user_posts_path(id: @post.user_id) %><br><br>
     <%= @post.blog_entry %><br><br>
     <button class="btn btn-warning"><%= link_to 'Edit', edit_post_path(@post) %> </button>
   </div>
@@ -21,7 +21,7 @@
   <%= image_tag comment.user.avatar.url, size: 34 %>
 <% end%>
   <p>
-	    <%= comment.user.username %> said...<br />
+	    <%= link_to comment.user.username, user_posts_path(id: comment.user_id) %> said...<br />
 	    <%= comment.comment_entry %>
 	</p>
     <% end %>
