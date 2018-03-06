@@ -14,6 +14,9 @@
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
+                <% if post.user.avatar.url != nil %>
+          <td><%= image_tag post.user.avatar.url, size: 50, class: "img-responsive" %></td>
+          <% end %>
         <td><%= comment.author %></td>
         <td><%= comment.comment_entry %></td>
         <td><%= link_to 'Show', comment %></td>
